@@ -1,16 +1,16 @@
-package com.company.Stack;
+package Stack;
 
 
-public class ResizingArrayStackOfStrings {
+public class ResizingArrayStack<T> implements Stack<T> {
 
     //An array wich stores the items
-    private String[] s;
+    private T[] s;
     //The current index where a new item can co
     //The previous index (--N) contains the last item
     private int N = 0;
 
-    public ResizingArrayStackOfStrings(){
-        s = new String[1];
+    public ResizingArrayStack(){
+        s = (T[]) new Object[1];
     }
 
     public boolean isEmpty(){
@@ -18,8 +18,7 @@ public class ResizingArrayStackOfStrings {
         return N == 0;
     }
 
-    public void push(String item){
-
+    public void push(T item) {
         //If the array is full, double it
         if (N == s.length) resize(2*s.length);
 
@@ -31,10 +30,10 @@ public class ResizingArrayStackOfStrings {
         //N++;
     }
 
-    public String pop(){
+
+    public T pop(){
         //Return the item one place before the current index en set the value to null for efficient memory
-        //
-        String item = s[--N];
+        T item = s[--N];
         s[N] = null;
 
         //If the array a quarter full, halve it
@@ -43,17 +42,17 @@ public class ResizingArrayStackOfStrings {
         return item;
 
         //N--;
-        //String item = s[N]
+        //T item = s[N]
         //s[N] = null;
         //return item;
     }
 
     private void resize(int capacity){
 
-        //Create a new String with a the new capacity
+        //Create a new T with a the new capacity
         //Loop trough the s array and put all the values in the copy array
         //The copy becomes s
-        String[] copy = new String[capacity];
+        T[] copy = (T[]) new Object[capacity];
         for (int i = 0; i < N; i++) {
             copy[i] = s[i];
         }

@@ -1,17 +1,17 @@
-package com.company.Queue;
+package Queue;
 
-public class ArrayQueueOfStrings implements QueueOfStrings {
+public class ArrayQueue<T> implements Queue<T> {
 
     //An array wich stores the items
-    private String[] q;
+    private T[] q;
     //The current index where a new item can co
     //The previous index (--tail) contains the last item
     private int tail = 0;
     private int head = 0;
     private int N = 0;
 
-    public ArrayQueueOfStrings(){
-        q = new String[1];
+    public ArrayQueue(){
+        q = (T[]) new Object[1];
     }
 
     public boolean isEmpty(){
@@ -19,8 +19,7 @@ public class ArrayQueueOfStrings implements QueueOfStrings {
         return tail == head;
     }
 
-    public void enqueue(String item){
-
+    public void enqueue(T item) {
         //If the array is full, double it
         if (tail == q.length) resize(2*q.length);
 
@@ -32,10 +31,10 @@ public class ArrayQueueOfStrings implements QueueOfStrings {
         //tail++;
     }
 
-    public String dequeue(){
+    public T dequeue(){
         //Return the item currently at the head, set the head to null
         //Increase the head
-        String item = q[head];
+        T item = q[head];
         q[head] = null;
         head++;
 
@@ -47,10 +46,10 @@ public class ArrayQueueOfStrings implements QueueOfStrings {
 
     private void resize(int capacity){
 
-        //Create a new String with a the new capacity
+        //Create a new T with a the new capacity
         //Loop trough the q array and put all the values in the copy array
         //The copy becomes q
-        String[] copy = new String[capacity];
+        T[] copy = (T[]) new Object[capacity];
         for (int i = 0; i < tail; i++) {
             copy[i] = q[i];
         }

@@ -1,4 +1,4 @@
-package com.company.Stack;
+package Stack;
 
 import edu.princeton.cs.algs4.StdIn;
 
@@ -24,10 +24,10 @@ public class MainStack {
 
          */
 
-//        LinkedStackOfStrings stack = new LinkedStackOfStrings();
-//        ResizingArrayStackOfStrings stack = new ResizingArrayStackOfStrings();
+//        LinkedStack stack = new LinkedStack();
+//        ResizingArrayStack stack = new ResizingArrayStack();
 
-        ArrayStackOfStrings stack = new ArrayStackOfStrings(12);
+        ArrayStack<String> stack = new ArrayStack<String>(12);
         String outputString = "";
         while (!StdIn.isEmpty()) {
 

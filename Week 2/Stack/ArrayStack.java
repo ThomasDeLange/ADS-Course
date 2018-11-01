@@ -1,15 +1,15 @@
-package com.company.Stack;
+package Stack;
 
-public class ArrayStackOfStrings implements StackOfStrings {
+public class ArrayStack<T> implements Stack<T> {
 
     //An array wich stores the items
-    private String[] s;
+    private T[] s;
     //The current index where a new item can co
     //The previous index (--N) contains the last item
     private int N = 0;
 
-    public ArrayStackOfStrings(int capacity){
-        s = new String[capacity];
+    public ArrayStack(int capacity){
+        s = (T[]) new Object[capacity];
     }
 
     public boolean isEmpty(){
@@ -17,7 +17,7 @@ public class ArrayStackOfStrings implements StackOfStrings {
         return N == 0;
     }
 
-    public void push(String item){
+    public void push(T item){
         //Set the value of the current index in the array to the item
         //Then increase the value of N
         s[N++] = item;
@@ -26,14 +26,14 @@ public class ArrayStackOfStrings implements StackOfStrings {
         //N++;
     }
 
-    public String pop(){
+    public T pop(){
         //Return the item one place before the current index en set the value to null for efficient memory
-        String item = s[--N];
+        T item = s[--N];
         s[N] = null;
         return item;
 
         //N--;
-        //String item = s[N]
+        //T item = s[N]
         //s[N] = null;
         //return item;
     }

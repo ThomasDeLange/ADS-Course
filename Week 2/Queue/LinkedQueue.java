@@ -1,16 +1,16 @@
-package com.company.Queue;
+package Queue;
 
-public class LinkedQueueOfStrings implements QueueOfStrings{
+public class LinkedQueue<T> implements Queue<T> {
 
     private Node first, last;
 
     private class Node{
         //Private inner class
-        String item;
+        T item;
         Node next;
     }
 
-    public void enqueue(String item) {
+    public void enqueue(T item) {
         //Set the node oldLast to last
         //Make a new last node with the item
         //Set the next for the last to be null (since it's the last)
@@ -28,13 +28,13 @@ public class LinkedQueueOfStrings implements QueueOfStrings{
         }
     }
 
-    public String dequeue() {
+    public T dequeue() {
         //Get the item of the first node
         //Set the first node to the next node
         //If the stack is empty set the last node to null
         //Else return the item
 
-        String item = first.item;
+        T item = first.item;
         first = first.next;
         if (isEmpty()){
             last = null;

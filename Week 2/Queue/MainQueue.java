@@ -1,26 +1,26 @@
-package com.company.Queue;
+package Queue;
 
 public class MainQueue {
 
     public static void main(String[] args) {
 
-        ArrayQueueOfStrings queue = new ArrayQueueOfStrings();
+        ArrayQueue<String> queue = new ArrayQueue<String>();
 
-        queue.enqueue("Thomas");
+        queue.enqueue("Thomas1");
         queue.enqueue("Thomas2");
         queue.enqueue("Thomas3");
         queue.enqueue("Thomas4");
         queue.enqueue("Thomas5");
         queue.enqueue("Thomas6");
         queue.enqueue("Thomas7");
-        queue.enqueue("Thomas");
+        queue.enqueue("Thomas1");
         queue.enqueue("Thomas2");
         queue.enqueue("Thomas3");
         queue.enqueue("Thomas4");
         queue.enqueue("Thomas5");
         queue.enqueue("Thomas6");
         queue.enqueue("Thomas7");
-        queue.enqueue("Thomas");
+        queue.enqueue("Thomas1");
         queue.enqueue("Thomas2");
         queue.enqueue("Thomas3");
         queue.enqueue("Thomas4");
