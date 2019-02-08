@@ -1,7 +1,9 @@
 package Stack;
 
 
-public class ResizingArrayStack<T> implements Stack<T> {
+import java.util.Iterator;
+
+public class ResizingArrayStack<T> implements Stack<T>, Iterable<T> {
 
     //An array wich stores the items
     private T[] s;
@@ -57,5 +59,31 @@ public class ResizingArrayStack<T> implements Stack<T> {
             copy[i] = s[i];
         }
         s = copy;
+    }
+
+    // Function wich returns the iterator
+    @Override
+    public Iterator<T> iterator() {
+        return new ReverseArrayIterator();
+    }
+
+    //The iterator that will get returned
+    //It's backwards because the last item added is at the end and the fist item added at the start
+    private class ReverseArrayIterator implements Iterator<T>{
+
+        //Get the index of the item
+        private int i = N;
+
+        //If the index is above 0 there are still numbers to the left
+        @Override
+        public boolean hasNext() {
+            return i > 0;
+        }
+
+        //Start at the end, give that node, make the current index one lower
+        @Override
+        public T next() {
+            return s[--i];
+        }
     }
 }

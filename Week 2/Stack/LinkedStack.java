@@ -2,7 +2,12 @@ package Stack;
 
 //Every operation is constant
 
-public class LinkedStack<T> implements Stack<T> {
+import java.util.Iterator;
+
+//Implement interface for stack with generic
+//implement interface so client can iterate trough list
+
+public class LinkedStack<T> implements Stack<T>, Iterable<T> {
 
 
     //Set the first node to null so if nothing is added it is empty
@@ -31,8 +36,6 @@ public class LinkedStack<T> implements Stack<T> {
         first.next = oldfirst;
     }
 
-
-
     public T pop(){
 
         //Get the item,
@@ -42,4 +45,34 @@ public class LinkedStack<T> implements Stack<T> {
         first = first.next;
         return item;
     }
+
+    //Use this class to return when client wants to iterate
+    private class ListIterator implements Iterator<T> {
+
+        //Set the current node to the first so we can start at the beginning
+        private Node current = first;
+
+        //If the current node is null the end is reached
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+
+        //Get the current item and set the current to the next item
+        @Override
+        public T next() {
+            T t = current.item;
+            current = current.next;
+            return t;
+        }
+    }
+
+    // This function returns the ListIterator
+    @Override
+    public Iterator<T> iterator() {
+        return new ListIterator();
+    }
+
+
 }

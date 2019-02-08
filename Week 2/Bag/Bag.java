@@ -1,11 +1,14 @@
-package Stack;
+package Bag;
 
 import java.util.Iterator;
 
-//Implement interface for stack with generic
-//implement interface so client can iterate trough list
+public class Bag<T> implements iBag<T>, Iterable<T> {
 
-public class ArrayStack<T> implements Stack<T>, Iterable<T> {
+
+    @Override
+    public int size() {
+        return 0;
+    }
 
     //An array wich stores the items
     private T[] s;
@@ -13,16 +16,14 @@ public class ArrayStack<T> implements Stack<T>, Iterable<T> {
     //The previous index (--N) contains the last item
     private int N = 0;
 
-    public ArrayStack(int capacity){
-        s = (T[]) new Object[capacity];
+    public Bag(){
+        s = (T[]) new Object[1];
     }
 
-    public boolean isEmpty(){
-        //Check if N has moved a place a.k.a. index 0 has an item
-        return N == 0;
-    }
+    public void add(T item) {
+        //If the array is full, double it
+        if (N == s.length) resize(2*s.length);
 
-    public void push(T item){
         //Set the value of the current index in the array to the item
         //Then increase the value of N
         s[N++] = item;
@@ -31,16 +32,16 @@ public class ArrayStack<T> implements Stack<T>, Iterable<T> {
         //N++;
     }
 
-    public T pop(){
-        //Return the item one place before the current index en set the value to null for efficient memory
-        T item = s[--N];
-        s[N] = null;
-        return item;
+    private void resize(int capacity){
 
-        //N--;
-        //T item = s[N]
-        //s[N] = null;
-        //return item;
+        //Create a new T with a the new capacity
+        //Loop trough the s array and put all the values in the copy array
+        //The copy becomes s
+        T[] copy = (T[]) new Object[capacity];
+        for (int i = 0; i < N; i++) {
+            copy[i] = s[i];
+        }
+        s = copy;
     }
 
     // Function wich returns the iterator
@@ -70,5 +71,3 @@ public class ArrayStack<T> implements Stack<T>, Iterable<T> {
     }
 
 }
-
-
